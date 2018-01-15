@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Xspace.iml" filepath="$PROJECT_DIR$/.idea/Xspace.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xspace-workload/xspace-workload.iml" filepath="$PROJECT_DIR$/xspace-workload/xspace-workload.iml" />
     </modules>
   </component>
 </project>
