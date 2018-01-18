@@ -12,11 +12,11 @@ Welcome to contribute and submit pull requests :)
 
 ## Project Structure
 * **xspace-workload**
- - HttpGet(String aUrl)
+  - HttpGet(String aUrl)
 
 * **code**
- - GitHub-Forking
- - rainbow-parser
+  - GitHub-Forking
+  - rainbow-parser
 
 **Copyright**
 
