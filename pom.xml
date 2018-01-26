@@ -10,6 +10,7 @@
     <version>0.1.0-SNAPSHOT</version>
     <modules>
         <module>xspace-workload</module>
+        <module>xspace-netty</module>
     </modules>
 
 
