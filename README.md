@@ -13,10 +13,16 @@ Welcome to contribute and submit pull requests :)
 ## Project Structure
 * **xspace-workload**
   - HttpGet(String aUrl)
+* **xspace-netty**
+  - Nio
+    - [Ex1](http://blog.csdn.net/tao_ssh/article/details/71111519)
+    - [Ex2](http://blog.csdn.net/u010853261/article/details/54799089)
 
 * **code**
-  - GitHub-Forking
   - rainbow-parser
+
+* **note**
+  - GitHub-Forking
 
 **Copyright**
 

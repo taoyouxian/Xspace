@@ -16,7 +16,7 @@ public class TimeCLientHandler extends ChannelInboundHandlerAdapter {
     private final ByteBuf firstMSG;
 
     public TimeCLientHandler() {
-        byte[] req = "QUERY TIME ORDER".getBytes();
+        byte[] req = "QUERY TIME ORDERs".getBytes();
         firstMSG = Unpooled.buffer(req.length);
         firstMSG.writeBytes(req);
     }
