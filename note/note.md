@@ -52,3 +52,38 @@ git push 直接push到自己的fork上面
 ```
 mvn -N io.takari:maven:wrapper
 ```
+
+## scp
+- plugins
+```sh
+scp -r pixels-presto-0.1.0-SNAPSHOT presto@presto00:/home/presto/opt/presto-server-0.192/plugin
+```
+or
+```
+scp -r pixels-presto-0.1.0-SNAPSHOT presto@presto00:~/opt/presto-server-0.192/plugin
+```
+
+- metadata server
+```
+scp pixels-daemon-0.1.0-SNAPSHOT-full.jar presto@presto00:~/opt/presto-server-0.192
+```
+
+## connector
+- module.xml
+```xml
+<packaging>presto-plugin</packaging>
+```
+- pom.xml
+```xml
+ <plugins>
+    <plugin>
+        <groupId>com.facebook.presto</groupId>
+        <artifactId>presto-maven-plugin</artifactId>
+        <version>0.3</version>
+        <extensions>true</extensions>
+    </plugin>
+</plugins>
+```
+
+## 日志
+presto的Master、Worker节点，看查询执行需要的节点数量，从而查看执行日志在哪部分节点上，有利于快速查看到Split之后的日志信息
