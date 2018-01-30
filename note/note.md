@@ -67,6 +67,10 @@ scp -r pixels-presto-0.1.0-SNAPSHOT presto@presto00:~/opt/presto-server-0.192/pl
 ```
 scp pixels-daemon-0.1.0-SNAPSHOT-full.jar presto@presto00:~/opt/presto-server-0.192
 ```
+- properties
+```
+scp pixels.properties presto@presto00:~/opt/presto-server-0.192
+```
 
 ## connector
 - module.xml
