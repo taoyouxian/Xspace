@@ -11,6 +11,7 @@
     <modules>
         <module>xspace-workload</module>
         <module>xspace-netty</module>
+        <module>xspace-exercise</module>
     </modules>
 
 
