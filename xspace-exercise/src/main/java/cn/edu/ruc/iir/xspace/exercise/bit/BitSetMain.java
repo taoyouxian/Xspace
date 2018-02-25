@@ -1,4 +1,4 @@
-package cn.edu.ruc.iir.xspace.exercise;
+package cn.edu.ruc.iir.xspace.exercise.bit;
 
 import java.util.BitSet;
 

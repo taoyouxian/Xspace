@@ -1,10 +1,10 @@
-package cn.edu.ruc.iir.xspace.exercise;
+package cn.edu.ruc.iir.xspace.exercise.bit;
 
 /**
  * @version V1.0
  * @Package: cn.edu.ruc.iir.xspace.exercise
  * @ClassName: B256Phone
- * @Description: [Bit](http : / / www.cnblogs.com / yellowb / p / 3647442.html)
+ * @Description: [Bit](http://www.cnblogs.com/yellowb/p/3647442.html)
  * @author: taoyouxian
  * @date: Create in 2018-02-23 19:00
  **/
