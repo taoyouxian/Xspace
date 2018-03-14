@@ -71,6 +71,30 @@ scp pixels-daemon-0.1.0-SNAPSHOT-full.jar presto@presto00:~/opt/presto-server-0.
 ```
 scp pixels.properties presto@presto00:~/opt/presto-server-0.192
 ```
+- mu-plugins.sh
+```sh
+#!/bin/bash
+rm /home/presto/opt/presto-server-0.192/data/var/log/server.log
+for ((i=1; i<=4; i++))
+do
+scp -r /home/presto/opt/presto-server-0.192/plugin/pixels-presto-0.1.0-SNAPSHOT/
+ presto@presto0$i:/home/presto/opt/presto-server-0.192/plugin/  
+scp /home/presto/opt/presto-server-0.192/pixels.properties presto@presto0$i:/hom
+e/presto/opt/presto-server-0.192/
+ssh root@presto0$i rm /home/presto/opt/presto-server-0.192/data/var/log/server.l
+og
+exit
+```
+
+## run
+- Thread1
+```sh
+java -Drole=main -jar pixels-daemon-0.1.0-SNAPSHOT-full.jar metadata
+```
+- Thread2
+```sh
+./bin/presto --server localhost:8080 --catalog pixels --schema pixels 
+```
 
 ## connector
 - module.xml
