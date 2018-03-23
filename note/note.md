@@ -81,7 +81,7 @@ scp -r /home/presto/opt/presto-server-0.192/plugin/pixels-presto-0.1.0-SNAPSHOT/
  presto@presto0$i:/home/presto/opt/presto-server-0.192/plugin/  
 scp /home/presto/opt/presto-server-0.192/pixels.properties presto@presto0$i:/hom
 e/presto/opt/presto-server-0.192/
-ssh root@presto0$i rm /home/presto/opt/presto-server-0.192/data/var/log/server.l
+ssh presto@presto0$i rm /home/presto/opt/presto-server-0.192/data/var/log/server.l
 og
 exit
 ```

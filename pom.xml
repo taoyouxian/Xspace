@@ -13,6 +13,7 @@
         <module>xspace-netty</module>
         <module>xspace-exercise</module>
         <module>xspace-retrieval</module>
+        <module>xspace-hadoop</module>
     </modules>
 
 
