@@ -1,6 +1,5 @@
 package cn.edu.ruc.iir.xspace.workload.util;
 
-import cn.edu.ruc.iir.xspace.workload.sql.Query;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
