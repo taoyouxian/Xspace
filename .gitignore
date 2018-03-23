@@ -24,6 +24,9 @@ hs_err_pid*
 
 # IDE generated files
 .idea/
+out/
+log/
+resources/
 *.iml
 
 # Jar packing

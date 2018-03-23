@@ -12,6 +12,7 @@
         <module>xspace-workload</module>
         <module>xspace-netty</module>
         <module>xspace-exercise</module>
+        <module>xspace-hadoop</module>
     </modules>
 
 
