@@ -71,7 +71,7 @@ scp pixels-daemon-0.1.0-SNAPSHOT-full.jar presto@presto00:~/opt/presto-server-0.
 ```
 scp pixels.properties presto@presto00:~/opt/presto-server-0.192
 ```
-- mu-plugins.sh
+- mv-plugins.sh
 ```sh
 #!/bin/bash
 rm /home/presto/opt/presto-server-0.192/data/var/log/server.log

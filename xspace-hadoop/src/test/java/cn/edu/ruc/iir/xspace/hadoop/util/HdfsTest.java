@@ -42,5 +42,9 @@ public class HdfsTest {
         }
     }
 
+    @Test
+    public void test() {
+        System.exit(1);
+    }
 
 }
