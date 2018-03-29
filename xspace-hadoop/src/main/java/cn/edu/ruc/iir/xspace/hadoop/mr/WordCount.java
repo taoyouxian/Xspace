@@ -62,11 +62,12 @@ public class WordCount {
         Job job = Job.getInstance(conf, "word count");
         job.setJarByClass(WordCount.class);
         job.setMapperClass(WordCountMapper.class);
+        job.setCombinerClass(WordCountReducer.class);
         job.setReducerClass(WordCountReducer.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
         FileInputFormat.addInputPath(job, new Path("/2018/wc/data"));
-        FileOutputFormat.setOutputPath(job, new Path("/2018/wc/res"));
+        FileOutputFormat.setOutputPath(job, new Path("/2018/wc/res1"));
         System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
 }
