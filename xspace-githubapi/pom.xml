@@ -9,7 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>xspace-retrieval</artifactId>
+    <artifactId>xspace-githubapi</artifactId>
+
 
     <properties>
         <jdk.version>1.8</jdk.version>
@@ -18,49 +19,6 @@
     </properties>
 
     <dependencies>
-
-        <!-- ikanalyzer -->
-        <!--<dependency>-->
-            <!--<groupId>com.janeluo</groupId>-->
-            <!--<artifactId>ikanalyzer</artifactId>-->
-        <!--</dependency>-->
-
-        <!-- lucene -->
-        <dependency>
-            <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-highlighter</artifactId>
-        </dependency>
-
-        <!-- http://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-common -->
-        <dependency>
-            <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-analyzers-common</artifactId>
-        </dependency>
-
-        <!-- http://mvnrepository.com/artifact/org.apache.lucene/lucene-memory -->
-        <dependency>
-            <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-memory</artifactId>
-        </dependency>
-
-        <!-- http://mvnrepository.com/artifact/org.apache.lucene/lucene-queryparser -->
-        <dependency>
-            <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-queryparser</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-common</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-hdfs</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
