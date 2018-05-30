@@ -38,10 +38,14 @@
 ```
 git remote set-url origin https://taoyx@bitbucket.org/taoyx/pixels.git https://taoyx@bitbucket.org/dbiir/pixels.git
 ```
+- 删除源
+git remote remove origin
 
 git remote -v
 - 添加源为dbiir
-git remote add dbiir https://taoyx@bitbucket.org/dbiir/pixels.git 
+git remote add dbiir git@bitbucket.org:dbiir/pixels.git
+- 添加本地源
+git remote add origin git@bitbucket.org:taoyx/pixels.git
 - 抓取最新的master上面的代码
 git pull dbiir master
 

@@ -88,13 +88,14 @@ public class InvertedIndex {
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf, "Inverted Index");
         job.setJarByClass(InvertedIndex.class);
+//        job.setNumReduceTasks(3);
         job.setMapperClass(InvertedIndex.InvertedIndexMapper.class);
         job.setCombinerClass(InvertedIndex.InvertedIndexCombiner.class);
         job.setReducerClass(InvertedIndex.InvertedIndexReducer.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
         FileInputFormat.addInputPath(job, new Path("/2018/Index/"));
-        FileOutputFormat.setOutputPath(job, new Path("/2018/res"));
+        FileOutputFormat.setOutputPath(job, new Path("/2018/res1"));
         System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
 }
