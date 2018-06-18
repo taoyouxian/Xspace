@@ -21,3 +21,32 @@ Refer: [Ubuntu 16.04安装MySQL及问题解决](https://www.linuxidc.com/Linux/2
 -重启MySQL服务
  
  /etc/init.d/mysql restart
+
+## `Mysql`重装
+- 删除mysql
+```
+sudo apt-get autoremove --purge mysql-server-5.5
+sudo apt-get remove mysql-common
+```
+- 清理残留数据
+```
+dpkg -l |grep ^rc|awk '{print $2}' |sudo xargs dpkg -P
+``` 
+- 重新安装mysql
+```
+sudo apt-get install mysql-server
+sudo apt-get install mysql-client
+(未使用)sudo apt-get install php5-mysql
+```
+
+## 开启远程连接
+```进入mysql -u root -p root
+GRANT ALL PRIVILEGES ON *.* TO 'Ubuntu'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;
+`Ubuntu`用户，`123456`密码
+FLUSH PRIVILEGES; 更新数据库
+```
+```shell
+sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf
+添加'#'注释掉其中的"bind-address = 127.0.0.1"
+service mysql restart
+```

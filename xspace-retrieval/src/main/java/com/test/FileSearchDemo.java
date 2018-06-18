@@ -8,6 +8,7 @@ import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
+import org.apache.lucene.index.Term;
 import org.apache.lucene.queryparser.classic.MultiFieldQueryParser;
 import org.apache.lucene.search.*;
 import org.apache.lucene.search.highlight.Highlighter;
@@ -93,8 +94,21 @@ public class FileSearchDemo {
             // MultiFieldQueryParser表示多个域解析， 同时可以解析含空格的字符串，如果我们搜索"上海 中国"
             Query multiFieldQuery = MultiFieldQueryParser.parse(keyWord, fields, clauses, analyzer);
 
+            Query termQuery = new TermQuery(new Term("content", keyWord));// 词语搜索,完全匹配,搜索具体的域
+            Query wildqQuery = new WildcardQuery(new Term("content", keyWord));// 通配符查询
+            Query prefixQuery = new PrefixQuery(new Term("content", keyWord));// 字段前缀搜索
+            Query fuzzyQuery = new FuzzyQuery(new Term("content", keyWord));// 相似度查询,模糊查询比如OpenOffica，OpenOffice
+            BooleanQuery.Builder queryBuilder = new BooleanQuery.Builder();
+            queryBuilder.add(multiFieldQuery, BooleanClause.Occur.SHOULD);
+            queryBuilder.add(termQuery, BooleanClause.Occur.SHOULD);
+            queryBuilder.add(wildqQuery, BooleanClause.Occur.SHOULD);
+            queryBuilder.add(prefixQuery, BooleanClause.Occur.SHOULD);
+            queryBuilder.add(fuzzyQuery, BooleanClause.Occur.SHOULD);
+            BooleanQuery query = queryBuilder.build(); // 这才是最终的query
+            TopDocs topDocs = indexSearcher.search(query, 100); // 搜索前100条结果
+
             // 5、根据searcher搜索并且返回TopDocs
-            TopDocs topDocs = indexSearcher.search(multiFieldQuery, 100); // 搜索前100条结果
+//            TopDocs topDocs = indexSearcher.search(multiFieldQuery, 100); // 搜索前100条结果
             System.out.println("共找到匹配处：" + topDocs.totalHits); // totalHits和scoreDocs.length的区别还没搞明白
             // 6、根据TopDocs获取ScoreDoc对象
             ScoreDoc[] scoreDocs = topDocs.scoreDocs;
@@ -131,6 +145,6 @@ public class FileSearchDemo {
     public static void main(String args[]) {
         FileSearchDemo demo = new FileSearchDemo();
         demo.creatIndex();
-        demo.search("hello world");
+        demo.search("hello");
     }
 }
