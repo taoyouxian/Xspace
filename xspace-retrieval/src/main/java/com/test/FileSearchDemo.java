@@ -86,24 +86,28 @@ public class FileSearchDemo {
             Analyzer analyzer = new IKAnalyzer(true); // 使用IK分词
 
             // 简单的查询，创建Query表示搜索域为content包含keyWord的文档
-            //Query query = new QueryParser("content", analyzer).parse(keyWord);
+//            Query query = new QueryParser("content", analyzer).parse(keyWord);
 
-            String[] fields = {"fileName", "content"}; // 要搜索的字段，一般搜索时都不会只搜索一个字段
-            // 字段之间的与或非关系，MUST表示and，MUST_NOT表示not，SHOULD表示or，有几个fields就必须有几个clauses
-            BooleanClause.Occur[] clauses = {BooleanClause.Occur.SHOULD, BooleanClause.Occur.SHOULD};
+//            String[] fields = {"fileName", "content"}; // 要搜索的字段，一般搜索时都不会只搜索一个字段
+            String[] fields = {"content"}; // 要搜索的字段，一般搜索时都不会只搜索一个字段
+//            // 字段之间的与或非关系，MUST表示and，MUST_NOT表示not，SHOULD表示or，有几个fields就必须有几个clauses
+            BooleanClause.Occur[] clauses = {BooleanClause.Occur.MUST};
             // MultiFieldQueryParser表示多个域解析， 同时可以解析含空格的字符串，如果我们搜索"上海 中国"
             Query multiFieldQuery = MultiFieldQueryParser.parse(keyWord, fields, clauses, analyzer);
 
-            Query termQuery = new TermQuery(new Term("content", keyWord));// 词语搜索,完全匹配,搜索具体的域
-            Query wildqQuery = new WildcardQuery(new Term("content", keyWord));// 通配符查询
-            Query prefixQuery = new PrefixQuery(new Term("content", keyWord));// 字段前缀搜索
-            Query fuzzyQuery = new FuzzyQuery(new Term("content", keyWord));// 相似度查询,模糊查询比如OpenOffica，OpenOffice
+//            Query termQuery = new TermQuery(new Term("content", keyWord));// 词语搜索,完全匹配,搜索具体的域
+            Query termQuery = new TermQuery(new Term("content", "赵丽颖"));// 词语搜索,完全匹配,搜索具体的域
+            Query termQuery1 = new TermQuery(new Term("content", "霍建华"));// 词语搜索,完全匹配,搜索具体的域
+//            Query wildqQuery = new WildcardQuery(new Term("content", keyWord));// 通配符查询
+//            Query prefixQuery = new PrefixQuery(new Term("content", keyWord));// 字段前缀搜索
+//            Query fuzzyQuery = new FuzzyQuery(new Term("content", keyWord));// 相似度查询,模糊查询比如OpenOffica，OpenOffice
             BooleanQuery.Builder queryBuilder = new BooleanQuery.Builder();
-            queryBuilder.add(multiFieldQuery, BooleanClause.Occur.SHOULD);
-            queryBuilder.add(termQuery, BooleanClause.Occur.SHOULD);
-            queryBuilder.add(wildqQuery, BooleanClause.Occur.SHOULD);
-            queryBuilder.add(prefixQuery, BooleanClause.Occur.SHOULD);
-            queryBuilder.add(fuzzyQuery, BooleanClause.Occur.SHOULD);
+//            queryBuilder.add(multiFieldQuery, BooleanClause.Occur.SHOULD);
+            queryBuilder.add(termQuery, BooleanClause.Occur.MUST);
+            queryBuilder.add(termQuery1, BooleanClause.Occur.MUST);
+//            queryBuilder.add(wildqQuery, BooleanClause.Occur.SHOULD);
+//            queryBuilder.add(prefixQuery, BooleanClause.Occur.SHOULD);
+//            queryBuilder.add(fuzzyQuery, BooleanClause.Occur.SHOULD);
             BooleanQuery query = queryBuilder.build(); // 这才是最终的query
             TopDocs topDocs = indexSearcher.search(query, 100); // 搜索前100条结果
 
@@ -145,6 +149,6 @@ public class FileSearchDemo {
     public static void main(String args[]) {
         FileSearchDemo demo = new FileSearchDemo();
         demo.creatIndex();
-        demo.search("hello");
+        demo.search("赵丽颖 霍建华");
     }
 }
