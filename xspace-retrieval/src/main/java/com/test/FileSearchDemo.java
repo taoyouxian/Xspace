@@ -96,15 +96,21 @@ public class FileSearchDemo {
             Query multiFieldQuery = MultiFieldQueryParser.parse(keyWord, fields, clauses, analyzer);
 
 //            Query termQuery = new TermQuery(new Term("content", keyWord));// 词语搜索,完全匹配,搜索具体的域
-            Query termQuery = new TermQuery(new Term("content", "赵丽颖"));// 词语搜索,完全匹配,搜索具体的域
-            Query termQuery1 = new TermQuery(new Term("content", "霍建华"));// 词语搜索,完全匹配,搜索具体的域
+
+//            Query termQuery = new TermQuery(new Term("content", "赵丽颖"));// 词语搜索,完全匹配,搜索具体的域
+//            Query termQuery1 = new TermQuery(new Term("content", "霍建华"));// 词语搜索,完全匹配,搜索具体的域
 //            Query wildqQuery = new WildcardQuery(new Term("content", keyWord));// 通配符查询
 //            Query prefixQuery = new PrefixQuery(new Term("content", keyWord));// 字段前缀搜索
 //            Query fuzzyQuery = new FuzzyQuery(new Term("content", keyWord));// 相似度查询,模糊查询比如OpenOffica，OpenOffice
             BooleanQuery.Builder queryBuilder = new BooleanQuery.Builder();
 //            queryBuilder.add(multiFieldQuery, BooleanClause.Occur.SHOULD);
-            queryBuilder.add(termQuery, BooleanClause.Occur.MUST);
-            queryBuilder.add(termQuery1, BooleanClause.Occur.MUST);
+            String[] keywords = keyWord.split(" ");
+            for (String key : keywords) {
+                Query termQuery = new TermQuery(new Term("content", key));// 词语搜索,完全匹配,搜索具体的域
+                queryBuilder.add(termQuery, BooleanClause.Occur.MUST);
+            }
+//            queryBuilder.add(termQuery, BooleanClause.Occur.MUST);
+//            queryBuilder.add(termQuery1, BooleanClause.Occur.MUST);
 //            queryBuilder.add(wildqQuery, BooleanClause.Occur.SHOULD);
 //            queryBuilder.add(prefixQuery, BooleanClause.Occur.SHOULD);
 //            queryBuilder.add(fuzzyQuery, BooleanClause.Occur.SHOULD);
