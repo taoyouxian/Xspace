@@ -17,6 +17,7 @@
         <module>xspace-githubapi</module>
         <module>xspace-common</module>
         <module>xspace-datascience</module>
+        <module>xspace-tc</module>
     </modules>
 
 
