@@ -30,29 +30,13 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass />
+                  <mainClass>${mainClass}</mainClass>
                 </transformer>
               </transformers>
               <artifactSet />
             </configuration>
           </execution>
         </executions>
-      </plugin>
-      <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <descriptorRefs>
-            <descriptorRef>jar-with-dependencies</descriptorRef>
-          </descriptorRefs>
-        </configuration>
       </plugin>
     </plugins>
   </build>
@@ -106,10 +90,11 @@
       <artifactId>IKAnalyzer2012_FF</artifactId>
       <version>1.0</version>
       <scope>system</scope>
-      <systemPath>H:\SelfLearning\SAI\DBIIR_Github\github\Xspace\xspace-retrieval/lib/IKAnalyzer2012_FF.jar</systemPath>
+      <systemPath>/home/tao/software/github/Xspace/xspace-retrieval/lib/IKAnalyzer2012_FF.jar</systemPath>
     </dependency>
   </dependencies>
   <properties>
+    <mainClass>cn.edu.ruc.iir.xspace.retrieval.Main</mainClass>
     <jdk.version>1.8</jdk.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>

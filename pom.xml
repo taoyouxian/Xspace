@@ -17,6 +17,7 @@
         <module>xspace-githubapi</module>
         <module>xspace-common</module>
         <module>xspace-datascience</module>
+        <module>xspace-tc</module>
     </modules>
 
 
@@ -36,7 +37,6 @@
 
     <dependencyManagement>
         <dependencies>
-
             <!-- ikanalyzer -->
             <dependency>
                 <groupId>com.janeluo</groupId>
@@ -84,6 +84,7 @@
                 <version>${dep.lucene.version}</version>
             </dependency>
             <!-- hdfs -->
+
             <dependency>
                 <groupId>org.apache.hadoop</groupId>
                 <artifactId>hadoop-common</artifactId>
