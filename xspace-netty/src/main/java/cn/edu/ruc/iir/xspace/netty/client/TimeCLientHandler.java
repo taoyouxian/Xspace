@@ -7,7 +7,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 /**
  * @version V1.0
  * @Package: cn.edu.ruc.iir.xspace.netty.client
- * @ClassName: TimeCLientHandler
+ * @ClassName: TimeClientHandler
  * @Description:
  * @author: taoyouxian
  * @date: Create in 2018-01-26 15:13

@@ -22,7 +22,7 @@ import io.netty.handler.codec.string.StringDecoder;
 public class TimeClient {
     public void connect(int port, String host) throws Exception {
         //配置客户端NIO 线程组
-        EventLoopGroup group = new NioEventLoopGroup();
+        EventLoopGroup group = new NioEventLoopGroup(1);
 
         Bootstrap client = new Bootstrap();
 
@@ -37,7 +37,7 @@ public class TimeClient {
 
                             channel.pipeline().addLast(new StringDecoder());
 
-                            channel.pipeline().addLast(new TimeCLientHandler());
+                            channel.pipeline().addLast(new TimeClientHandler());
 
                         }
                     });
