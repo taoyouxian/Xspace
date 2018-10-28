@@ -2,6 +2,8 @@ package cn.edu.ruc.iir.xspace.example;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import org.apache.http.client.utils.DateUtils;
@@ -28,7 +30,7 @@ public class TimeServerHandler extends ChannelInboundHandlerAdapter {
 //        ByteBuf buf = (ByteBuf) msg;
 //        byte[] req = new byte[buf.readableBytes()];
 //        buf.readBytes(req);
-        String body = (String)msg;
+        String body = (String) msg;
 
 //        String body = new String(req, "UTF-8").substring(0, req.length - System.getProperty("line.separator").length());
 
@@ -40,7 +42,10 @@ public class TimeServerHandler extends ChannelInboundHandlerAdapter {
         //response
         ByteBuf resp = Unpooled.copiedBuffer(currentTime.getBytes());
         //异步发送应答消息给客户端: 这里并没有把消息直接写入SocketChannel,而是放入发送缓冲数组中
-        ctx.writeAndFlush(resp);
+//        ctx.writeAndFlush(resp);
+
+        ChannelFuture future = ctx.writeAndFlush(resp);
+//        future.addListener((ChannelFutureListener) channelFuture -> ctx.close());
     }
 
     @Override
@@ -48,7 +53,7 @@ public class TimeServerHandler extends ChannelInboundHandlerAdapter {
         System.out.println("Server -> read complete");
 
         //将发送缓冲区中数据全部写入SocketChannel
-        //ctx.flush();
+        ctx.flush();
     }
 
     @Override
