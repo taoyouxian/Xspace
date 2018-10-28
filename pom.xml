@@ -18,6 +18,7 @@
         <module>xspace-common</module>
         <module>xspace-datascience</module>
         <module>xspace-tc</module>
+        <module>xspace-pixels</module>
     </modules>
 
 
@@ -197,6 +198,17 @@
                 <artifactId>junit-platform-runner</artifactId>
                 <version>1.0.0-M6</version>
                 <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.iq80.leveldb</groupId>
+                <artifactId>leveldb</artifactId>
+                <version>0.10</version>
+            </dependency>
+            <dependency>
+                <groupId>org.iq80.leveldb</groupId>
+                <artifactId>leveldb-api</artifactId>
+                <version>0.10</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -41,3 +41,7 @@ target/
 classes/
 deploy/
 javadoc/
+
+.gitignore.swp
+*.sst
+leveldb*/
