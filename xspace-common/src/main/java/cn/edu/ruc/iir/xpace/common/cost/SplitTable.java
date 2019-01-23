@@ -44,17 +44,28 @@ public class SplitTable {
     private static void give() {
         try (BufferedWriter costWriter = new BufferedWriter(new FileWriter(giveFile))) {
             costWriter.write("split id,fromUser,toUser,give to(¥)\n");
-            System.out.println("Split List: ");
+            System.out.println("Give List: ");
             int i = 0;
             for (int toId = 0; toId < includeUser.length; toId++) {
                 for (Relation relation : costSplitList) {
-                    if (relation.getToId() == Integer.valueOf(toId)) {
-                        System.out.println(relation.toString2());
-                        costWriter.write(i + "," + includeUsername[relation.getToId()] + "," + includeUsername[relation.getFromId()] + "," + relation.getCost() + "\n");
-                        if (i % 10 == 0) {
-                            costWriter.flush();
+                    if (relation.getCost() > 0) {
+                        if (relation.getToId() == Integer.valueOf(toId)) {
+                            System.out.println(relation.toString());
+                            costWriter.write(i + "," + includeUsername[relation.getToId()] + "," + includeUsername[relation.getFromId()] + "," + (int) relation.getCost() + "\n");
+                            if (i % 10 == 0) {
+                                costWriter.flush();
+                            }
+                            i++;
                         }
-                        i++;
+                    } else {
+                        if (relation.getFromId() == Integer.valueOf(toId)) {
+                            System.out.println(relation.toString());
+                            costWriter.write(i + "," + includeUsername[relation.getFromId()] + "," + includeUsername[relation.getToId()] + "," + (int) Math.abs(relation.getCost()) + "\n");
+                            if (i % 10 == 0) {
+                                costWriter.flush();
+                            }
+                            i++;
+                        }
                     }
                 }
             }

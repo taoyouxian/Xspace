@@ -44,22 +44,22 @@ public class Relation {
 
     @Override
     public String toString() {
-        return "Relation{" +
-                "id=" + id +
-                ", fromId=" + fromId +
-                ", toId=" + toId +
-                ", cost=" + cost +
-                ", used=" + used +
-                '}';
+        if (cost > 0)
+            return "Relation{" +
+                    "id=" + id +
+                    ", fromId=" + fromId +
+                    ", toId=" + toId +
+                    ", cost=" + cost +
+                    ", used=" + used +
+                    '}';
+        else
+            return "Relation{" +
+                    "id=" + id +
+                    ", fromId=" + toId +
+                    ", toId=" + fromId +
+                    ", cost=" + Math.abs(cost) +
+                    ", used=" + used +
+                    '}';
     }
 
-    public String toString2() {
-        return "Relation{" +
-                "id=" + id +
-                ", toId=" + toId +
-                ", fromId=" + fromId +
-                ", cost=" + cost +
-                ", used=" + used +
-                '}';
-    }
 }
