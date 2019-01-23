@@ -20,6 +20,7 @@ public class SplitTable {
     static int num = 0;
     static String costFile = "/home/tao/cost.txt";
     static String splitFile = "/home/tao/split.txt";
+    static String giveFile = "/home/tao/give.txt";
     static String[] includeUser = null;
     static String[] includeUsername = null;
 
@@ -36,6 +37,31 @@ public class SplitTable {
         split();
         // result
         result();
+        // give
+        give();
+    }
+
+    private static void give() {
+        try (BufferedWriter costWriter = new BufferedWriter(new FileWriter(giveFile))) {
+            costWriter.write("split id,fromUser,toUser,give to(¥)\n");
+            System.out.println("Split List: ");
+            int i = 0;
+            for (int toId = 0; toId < includeUser.length; toId++) {
+                for (Relation relation : costSplitList) {
+                    if (relation.getToId() == Integer.valueOf(toId)) {
+                        System.out.println(relation.toString2());
+                        costWriter.write(i + "," + includeUsername[relation.getToId()] + "," + includeUsername[relation.getFromId()] + "," + relation.getCost() + "\n");
+                        if (i % 10 == 0) {
+                            costWriter.flush();
+                        }
+                        i++;
+                    }
+                }
+            }
+            System.out.println("=======================");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private static void result() {
@@ -66,12 +92,12 @@ public class SplitTable {
                 }
             }
 
-            costWriter.write("split id,fromUser,toUser,cost(¥)\n");
+            costWriter.write("split id,fromUser,toUser,pay for(¥)\n");
             System.out.println("Split List: ");
             int i = 0;
             for (Relation relation : costSplitList) {
                 System.out.println(relation.toString());
-                costWriter.write(i + "," + includeUsername[relation.getFromId()] + "," + includeUsername[relation.getToId()] + "," + relation.getCost() + "\n");
+                costWriter.write(i + "," + includeUsername[relation.getToId()] + "," + includeUsername[relation.getFromId()] + "," + relation.getCost() + "\n");
                 if (i % 10 == 0) {
                     costWriter.flush();
                 }

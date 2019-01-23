@@ -52,4 +52,14 @@ public class Relation {
                 ", used=" + used +
                 '}';
     }
+
+    public String toString2() {
+        return "Relation{" +
+                "id=" + id +
+                ", toId=" + toId +
+                ", fromId=" + fromId +
+                ", cost=" + cost +
+                ", used=" + used +
+                '}';
+    }
 }
