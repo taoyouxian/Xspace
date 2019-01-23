@@ -13,7 +13,7 @@ public class TestLevelDB {
     Charset charset = Charset.forName("utf-8");
     String path = "/home/tao/software/github/Xspace/xspace-tc/src/test/java/cn/edu/ruc/iir/xspace/tc/evaluator/leveldb";
     int begin = 0;
-    int end = 1000000;
+    int end = 1000;
 
     @Test
     public void testLevelDB() throws IOException {
@@ -91,6 +91,13 @@ public class TestLevelDB {
         //重新open新的db
         DB db = factory.open(dir, options);
 
+        //write
+        db.put("key-01".getBytes(charset), "value-023".getBytes(charset));
+        db.put("key-02".getBytes(charset), "value-023".getBytes(charset));
+        db.put("key-02".getBytes(charset), "value-024".getBytes(charset));
+        db.put("key-01".getBytes(charset), "value-025".getBytes(charset));
+        db.put("key-03".getBytes(charset), "value-025".getBytes(charset));
+
         //read
         byte[] bv = db.get("key-02".getBytes(charset));
         if (bv != null && bv.length > 0) {
@@ -101,16 +108,16 @@ public class TestLevelDB {
         //iterator，遍历，顺序读
 
         //读选项
-        ReadOptions readOptions = new ReadOptions();
-//        readOptions.fillCache(false);//遍历中swap出来的数据，不应该保存在memtable中。
-        DBIterator iterator = db.iterator(readOptions);
-        while (iterator.hasNext()) {
-            Map.Entry<byte[], byte[]> item = iterator.next();
-            String key = new String(item.getKey(), charset);
-            String value = new String(item.getValue(), charset);//null,check.
-            System.out.println(key + ":" + value);
-        }
-        iterator.close();//must be
+//        ReadOptions readOptions = new ReadOptions();
+////        readOptions.fillCache(false);//遍历中swap出来的数据，不应该保存在memtable中。
+//        DBIterator iterator = db.iterator(readOptions);
+//        while (iterator.hasNext()) {
+//            Map.Entry<byte[], byte[]> item = iterator.next();
+//            String key = new String(item.getKey(), charset);
+//            String value = new String(item.getValue(), charset);//null,check.
+//            System.out.println(key + ":" + value);
+//        }
+//        iterator.close();//must be
 
         //
         db.close();

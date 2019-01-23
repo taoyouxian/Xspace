@@ -1,12 +1,16 @@
 ## map个数 源码分析
 [MapReduce Input Split（输入分/切片）详解](https://blog.csdn.net/dr_guo/article/details/51150278)
+
 [决定Mapper](http://ronxin999.blog.163.com/blog/static/42217920201279112163/)
+
 [mapred-default.xml](http://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml)
+
 [map和reduce的个数](https://www.jianshu.com/p/32be1e1af578)
 
+[深度分析如何在Hadoop中控制Map的数量](https://blog.csdn.net/StrongerBit/article/details/7440111)
 
 ![Map-Reduce](http://images.cnitblog.com/blog/306623/201306/23175247-1cff38de2f154503bccd89a5d057f696.x-png)
-![FileInputFormat](http://img.blog.csdn.net/20160414132403422?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![FileInputFormat](https://img-blog.csdn.net/20160414132403422?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 minSize=max{minSplitSize, mapreduce.input.fileinputformat.split.minsize(default:1L)} 
 
@@ -95,6 +99,8 @@ compute_map_num = min(split_num,  max(default_num, goal_num))
 3. [shffle阶段]对中间数据的控制，作为reduce的输入 
 4. [reduce阶段]对相同key的数据进行合并 
 5. [output阶段]按照格式输出到指定目录
+
+[hive合并小文件](https://blog.csdn.net/haohaizijhz/article/details/70338449)
 
 
 
