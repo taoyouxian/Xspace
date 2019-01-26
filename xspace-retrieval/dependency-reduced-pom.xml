@@ -90,7 +90,7 @@
       <artifactId>IKAnalyzer2012_FF</artifactId>
       <version>1.0</version>
       <scope>system</scope>
-      <systemPath>/home/tao/software/github/Xspace/xspace-retrieval/lib/IKAnalyzer2012_FF.jar</systemPath>
+      <systemPath>H:\SelfLearning\SAI\DBIIR_Github\github\Xspace\xspace-retrieval/lib/IKAnalyzer2012_FF.jar</systemPath>
     </dependency>
   </dependencies>
   <properties>
