@@ -15,7 +15,7 @@ import java.util.Map;
  **/
 public class TimeClientHandler extends ChannelInboundHandlerAdapter {
     private int counter;
-//    private final ByteBuf request;
+//    private final ByteBuf request;serialize
 
     private ReqParams params;
 
@@ -54,8 +54,8 @@ public class TimeClientHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         System.out.println("client -> read, " + msg);
-        if (msg instanceof Response) {
-            Response params = (Response) msg;
+        if (msg instanceof ResParams) {
+            ResParams params = (ResParams) msg;
             System.out.println(params.toString());
 
         } else {

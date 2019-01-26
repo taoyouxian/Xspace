@@ -18,6 +18,7 @@
         <module>xspace-common</module>
         <module>xspace-datascience</module>
         <module>xspace-tc</module>
+        <module>xspace-algorithm</module>
     </modules>
 
 
@@ -37,6 +38,13 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- serializable -->
+            <dependency>
+                <groupId>com.esotericsoftware</groupId>
+                <artifactId>kryo</artifactId>
+                <version>4.0.2</version>
+            </dependency>
+
             <!-- ikanalyzer -->
             <dependency>
                 <groupId>com.janeluo</groupId>

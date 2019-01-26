@@ -46,18 +46,18 @@ public class TimeServerHandler extends ChannelInboundHandlerAdapter {
                     break;
                 }
             }
-            Response response = new Response(params.getAction());
-            response.setParam(params.getAction(), res);
-//            ChannelFuture f = ctx.write(response);
+            ResParams resParams = new ResParams(params.getAction());
+            resParams.setResult(res);
+//            ChannelFuture f = ctx.write(resParams);
 //            f.addListener(ChannelFutureListener.CLOSE);
-            ChannelFuture future = ctx.writeAndFlush(response);
-//            future.addListener((ChannelFutureListener) channelFuture -> ctx.close());
+            ChannelFuture future = ctx.writeAndFlush(resParams);
+            future.addListener((ChannelFutureListener) channelFuture -> ctx.close());
         } else {
-            Response response = new Response("Default");
-            response.setParam("Default", "DefaultRes");
-//            ChannelFuture f = ctx.write(response);
+            ResParams resParams = new ResParams("Default");
+            resParams.setResult("DefaultRes");
+//            ChannelFuture f = ctx.write(resParams);
 //            f.addListener(ChannelFutureListener.CLOSE);
-            ChannelFuture future = ctx.writeAndFlush(response);
+            ChannelFuture future = ctx.writeAndFlush(resParams);
 //            future.addListener((ChannelFutureListener) channelFuture -> ctx.close());
         }
 
