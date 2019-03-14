@@ -19,6 +19,7 @@
         <module>xspace-datascience</module>
         <module>xspace-tc</module>
         <module>xspace-pixels</module>
+        <module>xspace-station</module>
     </modules>
 
 
