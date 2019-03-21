@@ -20,6 +20,7 @@
         <module>xspace-tc</module>
         <module>xspace-pixels</module>
         <module>xspace-station</module>
+        <module>xspace-leetcode</module>
     </modules>
 
 

@@ -1,4 +1,4 @@
-package cn.edu.ruc.iir.xspace.station.Sort;
+package cn.edu.ruc.iir.xspace.station.sort;
 
 import java.util.Arrays;
 

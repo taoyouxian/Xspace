@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import java.util.*;
 
+import static cn.edu.ruc.iir.xspace.exercise.A.a;
+
 /**
  * @version V1.0
  * @Package: cn.edu.ruc.iir.xspace.exercise
@@ -25,5 +27,22 @@ public class TestMap {
         queue.isEmpty();
         queue.peek();
 
+    }
+}
+
+interface A {
+
+    int a = 0;
+}
+
+interface B extends A{
+
+    int a = 1;
+}
+
+class C implements A, B {
+
+    void print() {
+        System.out.println(A.a);
     }
 }
