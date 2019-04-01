@@ -3,6 +3,7 @@ package cn.edu.ruc.iir.xspace.exercise;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static cn.edu.ruc.iir.xspace.exercise.A.a;
 
@@ -22,6 +23,7 @@ public class TestMap {
         Map<String, String> linkedHashMap = new LinkedHashMap<>();
         Map<String, String> treeMap = new TreeMap<>();
         Map<String, String> hashtable = new Hashtable<>();
+        Map<String, String> concurrentHashMap = new ConcurrentHashMap<>();
 
         Queue<Integer> queue = new LinkedList<>();
         queue.isEmpty();
