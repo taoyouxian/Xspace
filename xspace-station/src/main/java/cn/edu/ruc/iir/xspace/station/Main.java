@@ -1,6 +1,7 @@
 package cn.edu.ruc.iir.xspace.station;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @version V1.0
@@ -17,6 +18,7 @@ public class Main {
 //        int[] array = new int[]{1, 2, 3, 4, 5, 6, 7};
 //        System.out.println(Arrays.toString(array));
 
+        ConcurrentHashMap concurrentHashMap = new ConcurrentHashMap();
         Collections.sort(null);
     }
     Map<String, String> map =new LinkedHashMap<>();

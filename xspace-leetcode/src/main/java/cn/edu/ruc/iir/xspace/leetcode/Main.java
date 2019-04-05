@@ -1,32 +1,45 @@
 package cn.edu.ruc.iir.xspace.leetcode;
 
-import java.util.Comparator;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.Scanner;
 
-/**
- * @version V1.0
- * @Package: cn.edu.ruc.iir.xspace.leetcode
- * @ClassName: Main
- * @Description:
- * @author: tao
- * @date: Create in 2019-03-20 09:04
- **/
 public class Main {
     public static void main(String[] args) {
-        Queue<Integer> q = new PriorityQueue(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o2 - o1;
+//        System.out.println((int) 'A');
+//        System.out.println((int) 'a');
+//        System.out.println((int) 'z');
+//        System.out.println((int) 'Z');
+        Scanner sc = new Scanner(System.in);
+        String n = sc.nextLine();
+        if (n == null)
+            return;
+        StringBuilder sb = new StringBuilder(n);
+        sb.reverse();
+        n = sb.toString();
+        int len = n.length();
+        int k = 0, j, i;
+//        System.out.println(n);
+        char[] str = n.toCharArray();
+        while (k < len) {
+            i = j = k;
+            while (str[j] != ' ') {
+                j++;
+                if (j == len || str[j] < 'A' || str[j] > 'z' || (str[j] > 'Z' && str[j] < 'a'))
+                    break;
             }
+            k = j + 1;
+            for (j = j - 1; i < j; j--, i++) {
+                if (str[j] < 'A' || str[j] > 'z' || (str[j] > 'Z' && str[j] < 'a'))
+                    i++;
+                swap(i, j, str);
+            }
+//            System.out.println(new String(str));
+        }
+        System.out.println(new String(str));
+    }
 
-        });
-        q.add(1);
-        q.add(-1);
-        q.add(12);
-        q.add(-11);
-        q.add(20);
-        q.add(0);
-        System.out.println(q.toString());
+    private static void swap(int i, int j, char[] str) {
+        char t = str[j];
+        str[j] = str[i];
+        str[i] = t;
     }
 }

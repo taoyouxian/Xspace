@@ -13,11 +13,13 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
-        int[] a = new int[]{10, 5, 3, 2, 6, 7};
+        int[] a = new int[]{10, 5, -3, 2, 6, 7, 11, 20, 5, 6, 5, -6};
 
 //        mergeSortUp2Down(a, 0, a.length - 1);
-        mergeSortDown2Up(a);
-
+//        mergeSortDown2Up(a);
+//        insertSort(a, a.length);
+//        quickSort(a, 0, a.length - 1);
+        qSort(a, 0, a.length - 1);
         System.out.println(Arrays.toString(a));
     }
 
@@ -78,4 +80,114 @@ public class Main {
         for (int i = 1; i < a.length; i *= 2)
             mergeGroups(a, a.length, i);
     }
+
+    // 插入排序
+    public static void insertSort(int[] a, int n) {
+        int i, j, temp;
+        for (i = 1; i < n; i++) {
+            if (a[i] < a[i - 1]) {
+                temp = a[i];
+
+                for (j = i; j >= 1 && temp < a[j - 1]; j--) {
+                    a[j] = a[j - 1];
+                }
+                a[j] = temp;
+            }
+        }
+    }
+
+    // 快速排序
+    public static void quickSort(int[] a, int left, int right) {
+        if (left >= right)
+            return;
+        int pos = findPos(a, left, right);
+        quickSort(a, left, pos - 1);
+        quickSort(a, pos + 1, right);
+    }
+
+    private static int findPos(int[] a, int left, int right) {
+        int key = a[left];
+        while (left < right) {
+            while (left < right && a[right] >= key) right--;
+            if (left < right) a[left++] = a[right];
+            while (left < right && a[left] <= key) left++;
+            if (left < right) a[right--] = a[left];
+        }
+        a[left] = key;
+        return left;
+    }
+
+    public static void qSort(int[] a, int low, int high) {
+        if (low >= high) return;
+        int first = low;
+        int last = high;
+
+        int left = low;
+        int right = high;
+
+        int leftLen = 0;
+        int rightLen = 0;
+
+        int key = selectMidOfThree(a, low, high);
+
+        while (low < high) {
+            while (low < high && a[high] >= key) {
+                if (a[high] == key) {
+                    swap(a, right, high);
+                    right--;
+                    rightLen++;
+                }
+                high--;
+            }
+            if (low < high)
+                a[low++] = a[high];
+            while (low < high && a[low] <= key) {
+                if (a[low] == key) {
+                    swap(a, left, low);
+                    left++;
+                    leftLen++;
+                }
+                low++;
+            }
+            if (low < high)
+                a[high--] = a[low];
+        }
+        a[low] = key;
+
+        int i = low - 1;
+        int j = first;
+        while (j < left && a[i] != key) {
+            swap(a, i, j);
+            i--;
+            j++;
+        }
+        i = low + 1;
+        j = last;
+        while (j > right && a[i] != key) {
+            swap(a, i, j);
+            i++;
+            j--;
+        }
+        qSort(a, first, low - 1 - leftLen);
+        qSort(a, low + 1 + rightLen, last);
+    }
+
+
+    private static int selectMidOfThree(int[] a, int low, int high) {
+        int mid = (high - low) / 2 + low;
+        if (a[low] > a[mid])
+            swap(a, low, mid);
+        if (a[low] > a[high])
+            swap(a, low, high);
+        if (a[mid] > a[high])
+            swap(a, mid, high);
+        return a[mid];
+    }
+
+    private static void swap(int[] a, int i, int i1) {
+        int t = a[i];
+        a[i] = a[i1];
+        a[i1] = t;
+    }
+
 }
