@@ -4,10 +4,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-//        System.out.println((int) 'A');
-//        System.out.println((int) 'a');
-//        System.out.println((int) 'z');
-//        System.out.println((int) 'Z');
         Scanner sc = new Scanner(System.in);
         String n = sc.nextLine();
         if (n == null)
@@ -37,9 +33,11 @@ public class Main {
         System.out.println(new String(str));
     }
 
+
     private static void swap(int i, int j, char[] str) {
         char t = str[j];
         str[j] = str[i];
         str[i] = t;
+
     }
 }
